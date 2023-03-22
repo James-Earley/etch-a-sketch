@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const gridNumber = 16;
+function gridMaker (userinput = 16) {
+  const gridNumber = userinput
   const container = document.getElementById("container");
   container.style.display = "flex";
 
@@ -10,27 +10,38 @@ document.addEventListener("DOMContentLoaded", function() {
     for (let j = 1; j <= gridNumber; j++) {
       const row = document.createElement("div");
       row.style.display = "flex";
-      row.style.minHeight = "30px";
-      row.style.maxHeight = "40px";
       column.appendChild(row).className = "cell";
     }
      
   }
+  hoverEffect();
+}
   
-  });
-
-document.addEventListener("DOMContentLoaded", function () {
+function hoverEffect () {
   const gridCells = document.querySelectorAll("div.cell");
-  console.log(gridCells);
   gridCells.forEach((item) => {
     item.addEventListener("mouseover", () => {
       item.classList.add("hover");
     });
-
     //item.addEventListener("mouseout", () => {
     //  item.classList.remove("hover");
     //});
   });
-});
+}
 
+function userButton () {
+const button = document.getElementById("button");
+button.addEventListener("click", function() {
+  removeGridmaker();
+  const userInput = prompt("how big do you want the square to be?")
+  gridMaker(userInput);
+})
+}
 
+function removeGridmaker() {
+  container.innerHTML = "";
+}
+
+gridMaker();
+hoverEffect();
+userButton();

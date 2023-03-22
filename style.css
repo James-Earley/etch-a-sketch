@@ -1,7 +1,13 @@
+#outer-container {
+    width: 960px;
+    max-width: 960px;
+}
+
 #container div {
     border: 1px solid black;
     flex-wrap: wrap;
     aspect-ratio: 1 / 1;
+    flex-grow: 1;
   }
 
 .cell {
